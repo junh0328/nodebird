@@ -35,3 +35,6 @@
 - req.session에 저장된 아이디로 데이터베이스에서 사용자 조회
 - 조회된 사용자 정보를 req.user에 저장
 - 라우터에서 req.user 객체 사용 가능
+
+★ 카카오 로그인 api 사용하기
+https://velog.io/@devmin/kakao-login-basic
