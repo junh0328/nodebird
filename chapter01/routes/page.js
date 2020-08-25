@@ -19,7 +19,7 @@ router.get('/', (req, res, next) => {
         title: 'NodeBird',
         twits: [],
         user: null,
-        // loginError = req.flash('loginError'),
+        loginError: req.flash('loginError'),
     });
 });
 

@@ -1,5 +1,3 @@
-const Sequelize = require('sequelize');
-
 module.exports = (sequelize, DataTypes) => (
     sequelize.define('user', {
         email: {
@@ -9,6 +7,10 @@ module.exports = (sequelize, DataTypes) => (
         },
         nick: {
             type: DataTypes.STRING(15),
+            allowNull: false,
+        },
+        password: {
+            type: DataTypes.STRING(100),
             allowNull: true,
         },
         provider: {

@@ -24,7 +24,7 @@ app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(session({
     resave: false,
     saveUninitialized: false,
-    secret: 'process.env.COOKIE_SECRET',
+    secret: process.env.COOKIE_SECRET,
     cookie: {
         httpOnly: true,
         secure: false,
@@ -42,11 +42,11 @@ app.use((req, res, next) => {
 
 app.use((err, req, res, next) => {
     res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'developement' ? err : {};
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
     res.status(err.status || 500);
     res.render('error');
 });
 
 app.listen(app.get('port'), () => {
-    console.log(app.get('port'), '번 포트에서 대기 중')
+    console.log(app.get('port'), '번 포트에서 대기중');
 });
