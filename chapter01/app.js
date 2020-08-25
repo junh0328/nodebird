@@ -4,13 +4,17 @@ const morgan = require('morgan');
 const path = require('path');
 const session = require('express-session');
 const flash = require('connect-flash');
+const passport = require('passport');
 require('dotenv').config();
 
 const pageRouter = require('./routes/page');
-const { sequelize } = require('./models');
+const authRouter = require('./routes/auth');
+const { sequelize } = require('./models');      //models 폴더 안에 index.js 파일을 의미
+const passportConfig = require('./passport');   //passport 폴더 안에 index.js 파일을 의미한다
 
 const app = express();
 sequelize.sync();
+passportConfig(passport);
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -31,8 +35,11 @@ app.use(session({
     },
 }));
 app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', pageRouter);
+app.use('/', authRouter);
 
 app.use((req, res, next) => {
     const err = new Error('Not Found');
