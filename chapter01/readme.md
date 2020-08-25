@@ -14,3 +14,24 @@
 - user.js : 사용자 정보를 저장하는 모델
 - post.js : 게시글 내용과 이미지 경로를 저장하는 모델
 - hashtag.js : 태그 이름을 저장합니다. 나중에 태그로 검색하기 위해서 따로 저장하는 것
+
+★ 꿀 팁
+- require(./passport')는 require('./passport/index.js')와 같습니다. 폴더 내의 index.js파일은 require시 이름을 생략할 수 있습니다.
+- passport.initialize() 미들웨어는 요청(req 객체)에 passport 설정을 삼고, 
+- passport.session() 미들웨어는 req.session 객체에 passport 정보를 저장합니다.
+- req.session 객체는 express-session에서 생성하는 것이므로 passport 미들웨어는 express-session 미들웨어보다 뒤에 연결해야 합니다.
+
+★ 로그인 과정
+- 로그인 요청이 들어옴
+- passport.authenticate 메서드 호출
+- 로그인 전략 수행
+- 로그인 성공 시 사용자 정보 객체와 함께 req.login 호출
+- req.login 메서드가 passport.serializeUser 호출
+- req.session에 사용자 아이디만 저장
+- 로그인 완료
+
+★ 로그인 이후 과정
+- 모든 요청에 passport.session() 미들웨어가 passport.deserializeUser 메서드 호출
+- req.session에 저장된 아이디로 데이터베이스에서 사용자 조회
+- 조회된 사용자 정보를 req.user에 저장
+- 라우터에서 req.user 객체 사용 가능

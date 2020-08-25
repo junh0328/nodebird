@@ -1,3 +1,8 @@
+/*
+해시테그 모델은 태그 이름을 저장합니다.
+해시태그 모델을 따로 두는 것은 나중에 태그로 검색하기 위해서입니다.
+*/
+
 module.exports = (sequelize, DataTypes) => (
     sequelize.define('hashtag', {
         title: {

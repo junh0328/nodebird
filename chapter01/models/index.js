@@ -1,3 +1,6 @@
+/*
+생성한 hashtag/ post/ user 모델을 시퀄라이즈에 등록합니다.
+*/
 const Sequelize = require('sequelize');
 const env = process.env.NODE_ENV || 'development';
 const config = require('../config/config')[env];
