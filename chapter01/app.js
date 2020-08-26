@@ -39,7 +39,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', pageRouter);
-app.use('/', authRouter);
+app.use('/auth', authRouter);
 
 app.use((req, res, next) => {
     const err = new Error('Not Found');
