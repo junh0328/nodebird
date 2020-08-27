@@ -9,8 +9,10 @@ require('dotenv').config();
 
 const pageRouter = require('./routes/page');
 const authRouter = require('./routes/auth');
-const { sequelize } = require('./models');      //models 폴더 안에 index.js 파일을 의미
-const passportConfig = require('./passport');   //passport 폴더 안에 index.js 파일을 의미한다
+const postRouter = require('./routes/post');
+const userRouter = require('./routes/user');
+const { sequelize } = require('./models');
+const passportConfig = require('./passport');
 
 const app = express();
 sequelize.sync();
@@ -22,6 +24,7 @@ app.set('port', process.env.PORT || 8001);
 
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/img', express.static(path.join(__dirname, 'uploads')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
@@ -40,6 +43,8 @@ app.use(passport.session());
 
 app.use('/', pageRouter);
 app.use('/auth', authRouter);
+app.use('/post', postRouter);
+app.use('/user', userRouter);
 
 app.use((req, res, next) => {
     const err = new Error('Not Found');
