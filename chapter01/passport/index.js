@@ -25,6 +25,10 @@ module.exports = (passport) => {
                 model: User,
                 attributes: ['id', 'nick'],
                 as: 'Followers',
+            }, {
+                model: User,
+                attributes: ['id', 'nick'],
+                as: 'Followings',
             }],
         })
             .then(user => done(null, user))
