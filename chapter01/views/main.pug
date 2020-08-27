@@ -11,9 +11,9 @@ block content
             img#img-preview(src='' style='display: none;' width='250' alt='미리보기')
             input#img-url(type='hidden' name='url')
           div
-            label#img-label(for='img') 사진 업로드
+            label#img-label(for='img') 사진 찾기
             input#img(type='file' accept='image/*')
-            button#twit-btn.btn(type='submit') 짹짹
+            button#twit-btn.btn(type='submit') 업로드
     .twits
       form#hashtag-form(action='/post/hashtag')
         input(type='text' name='hashtag' placeholder='태그 검색')
