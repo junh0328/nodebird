@@ -39,3 +39,11 @@
 
 ★ 카카오 로그인 api 사용하기
 https://velog.io/@devmin/kakao-login-basic
+
+★  sequelize 오류
+- sequelize : 'sequelize' 용어가 cmdlet, 함수, 스크립트 파일 또는 실행할 수 있는 프로그램 이름으로 인식되지 않습니다. 이름이 정확한지 확인하고 경로가 포함된 경우 경로가 올바른지 검증한 다음 다시 시도하십시오.
+
+- npm i -g sequelize-cli 로 sequelize-cli를 사용하겠다고 명령
+- sequelize init 실행
+
+- 후에 sequelize db:create 로 config.json에 연결하고싶은 디비와 연결
