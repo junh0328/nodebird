@@ -1,0 +1,14 @@
+페이스북 개발자센터
+https://developers.facebook.com
+
+표시이름 Passport_test
+
+앱 ID 731377644109245
+
+앱 시크릿 코드 dea22176af8b9cbe99b70c7edd6eda37
+
+socket.io (https://socket.io/)
+웹 소켓을 이용해 클라이언트에 실시간으로 데이터를 전송하기 위해 사용합니다.
+socket.io는 Socket을 구현한 것으로 WebSocket 개발을 쉽게 하기 위해 만들어졌습니다.
+
+<script src= "https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
