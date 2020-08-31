@@ -7,7 +7,7 @@ module.exports = (passport) => {
         clientID: process.env.FACEBOOK_ID,
         clientSecret: 'dea22176af8b9cbe99b70c7edd6eda37',
         callbackURL: '/auth/facebook/callback',
-    }, async (accessToken, refreshToke, profile, done) => {
+    }, async (accessToken, refreshToken, profile, done) => {
         try {
             const exUser = await User.findOne({ where: { snsId: profile.id, provider: 'facebook' } });
             if (exUser) {
