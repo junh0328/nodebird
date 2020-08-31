@@ -11,6 +11,7 @@ deserializeUser는 매 요청 시 실행됩니다.
 const local = require('./localStrategy');
 const kakao = require('./kakaoStrategy');
 const facebook = require('./facebookStrategy');
+const naver = require('./naverStrategy');
 
 const { user, User } = require('../models');
 const passport = require('passport');
@@ -40,6 +41,7 @@ module.exports = (passport) => {
     local(passport);
     kakao(passport);
     facebook(passport);
+    naver(passport);
 };
 
 

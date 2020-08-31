@@ -55,6 +55,7 @@ router.get('/logout', isLoggedIn, (req, res) => {
 
 router.get('/kakao', passport.authenticate('kakao'));
 router.get('/facebook', passport.authenticate('facebook'));
+router.get('/naver', passport.authenticate('naver'));
 
 router.get('/kakao/callback', passport.authenticate('kakao', {
     failureRedirect: '/',
@@ -63,6 +64,13 @@ router.get('/kakao/callback', passport.authenticate('kakao', {
 });
 
 router.get('/facebook/callback', passport.authenticate('facebook', {
+    failureRedirect: '/',
+}), (req, res) => {
+    res.redirect('/');
+
+});
+
+router.get('/naver/callback', passport.authenticate('naver', {
     failureRedirect: '/',
 }), (req, res) => {
     res.redirect('/');

@@ -1,15 +1,15 @@
-const facebookStrategy = require('passport-facebook').Strategy;
+const naverStrategy = require('passport-naver').Strategy;
 
 const { User } = require('../models');
 
 module.exports = (passport) => {
-    passport.use(new facebookStrategy({
-        clientID: process.env.FACEBOOK_ID,
-        clientSecret: 'dea22176af8b9cbe99b70c7edd6eda37',
-        callbackURL: '/auth/facebook/callback',
-    }, async (accessToken, refreshToke, profile, done) => {
+    passport.use(new naverStrategy({
+        clientID: process.env.NAVER_ID,
+        clientSecret: 'cYsXL_zvJA',
+        callbackURL: '/auth/naver/callback',
+    }, async (accessToken, refreshToken, profile, done) => {
         try {
-            const exUser = await User.findOne({ where: { snsId: profile.id, provider: 'facebook' } });
+            const exUser = await User.findOne({ where: { snsId: profile.id, provider: 'naver' } });
             if (exUser) {
                 done(null, exUser);
             } else {
@@ -17,7 +17,7 @@ module.exports = (passport) => {
                     email: profile._json && profile._json.kaccount_email,
                     nick: profile.displayName,
                     snsId: profile.id,
-                    provider: 'facebook',
+                    provider: 'naver',
                 });
                 done(null, newUser);
             }
@@ -26,4 +26,4 @@ module.exports = (passport) => {
             done(error);
         }
     }));
-};
+}
