@@ -18,3 +18,10 @@ module.exports = (sequelize, DataTypes) => (
         paranoid: true,
     })
 );
+
+/*
+paranoid: true 옵션은 timestamps: true일 때 사용할 수 있는 기능입니다.
+createdAt, updatedAt, deletedAt이라는 컬럼을 post 테이블에 추가하게 됩니다.
+후에 로우를 삭제하는 시퀄라이즈 명령을 내렸을 때 로우를 제거하는 대신, deletedAt에 제거된 날짜를 입력합니다.
+로우를 조회하는 명령어를 내렸을 때는 deletedAt값이 null인 로우를 조회합니다. (삭제되지 않았다는 것을 의미)
+*/
