@@ -5,7 +5,6 @@ const fs = require('fs');
 
 const Room = require('../schemas/room');
 const Chat = require('../schemas/chat');
-const { error } = require('console');
 
 const router = express.Router();
 
@@ -114,12 +113,12 @@ const upload = multer({
         },
         filename(req, file, cb) {
             const ext = path.extname(file.originalname);
-            cb(null, path.basename(file.originalname, ext) + Date.now() + ext);
+            cb(null, path.basename(file.originalname, ext) + new Date().valueOf() + ext);
         },
     }),
     limits: { fileSize: 5 * 1024 * 1024 },
 });
-router.post('/room:id/gif', upload.single('gif'), async (req, res, next) => {
+router.post('/room/:id/gif', upload.single('gif'), async (req, res, next) => {
     try {
         const chat = new Chat({
             room: req.params.id,
